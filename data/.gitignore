@@ -2,6 +2,8 @@
 
 # ignore all files in this "data" directory:
 *
+dotenv
+.env
 
 # except this ".gitignore" file:
 !.gitignore
