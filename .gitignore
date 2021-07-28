@@ -1,7 +1,7 @@
 
 # this is the ".gitignore" file
 
-# ignore secret environment variable values in the ".env" file:
+# ignore secret environment variable values in the "dotenv" file:
 .env
 dotenv
 
