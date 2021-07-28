@@ -3,6 +3,7 @@
 import json
 import re
 import requests
+import statistics
 print("-------------------------")
 x = input("Select your symbol:")
 print("Stock symbol selected:", x)
@@ -46,8 +47,8 @@ dates = list(tsd)
 last_refreshed = parsed_response["Meta Data"]["3. Last Refreshed"]
 dates = list(tsd.keys()) 
 
-latest_day = dates[0] #for the latest day
-latest_close = tsd[latest_day]["4. close"] #what was the last close?
+latest_day = dates[0]
+latest_close = tsd[latest_day]["4. close"] 
 
 high_prices = []
 low_prices = []
@@ -67,9 +68,9 @@ recent_low = min(low_prices)
 csv_file_path = "data/prices.csv"
 csv_headers = ["timestamp", "open", "high", "low", "close"]
 
-with open(csv_file_path, "w") as csv_file: # "w" means "open the file for writing"
+with open(csv_file_path, "w") as csv_file: 
     writer = csv.DictWriter(csv_file, fieldnames=csv_headers)
-    writer.writeheader() # uses fieldnames set above
+    writer.writeheader()
     for date in dates:
         daily_prices = tsd[date]
         writer.writerow({
@@ -79,3 +80,31 @@ with open(csv_file_path, "w") as csv_file: # "w" means "open the file for writin
             "low": daily_prices["3. low"],
             "close": daily_prices["4. close"],
         })
+
+if float(latest_close) < statistics.mean(high_prices):
+    recommendation = "Buy"
+elif float(latest_close) > statistics.mean(high_prices):
+    recommendation = "Sell"
+
+if recommendation == "Buy":
+    reason = "The close is lower than the average high in the dataset."
+
+if recommendation == "Sell":
+    reason = "The close is higher than the average high in the dataset."
+
+print("-------------------------")
+print("SELECTED SYMBOL:", x)
+print("-------------------------")
+print("REQUESTING STOCK MARKET DATA...")
+print("REQUEST AT: 2018-02-20 02:00pm")
+print("-------------------------")
+print("LATEST DAY:", latest_day)
+print("LATEST CLOSE:", latest_close)
+print("RECENT HIGH:", recent_high)
+print("RECENT LOW:", recent_low)
+print("-------------------------")
+print("RECOMMENDATION:", recommendation)
+print("RECOMMENDATION REASON:", reason)
+print("-------------------------")
+print("HAPPY INVESTING!")
+print("-------------------------")

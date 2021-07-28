@@ -5,7 +5,7 @@
 
 #After repo is opened, make the instructions for the service by creating a separate "robo_advisor.py" file in the Desktop app you're using. This will be used to ensure your set-up and environment are correct.
 
-'''
+'''sh
 print("-------------------------")
 print("SELECTED SYMBOL: XYZ")
 print("-------------------------")
@@ -34,7 +34,7 @@ python-dotenv"
 
 #Now, create/set up the environment:
 
-'''
+'''sh
 conda create -n stocks-env python=3.8 # (first time only)
 conda activate stocks-env
 "
@@ -42,9 +42,17 @@ conda activate stocks-env
 #Install your packakes by activating pip install requirements...
 
 #now test the system. If this processes, we're good to continue:
-"
+''' sh
 python app/robo_advisor.py
-"
+"'
+
+#After we've tested the inputs, it's time to incorporate the data
+
+#Create a dotenv file with the APIKey you've generated from AlphaVantage's website and code it into the file
+
+#Prep the input for the stock symbol. We need to prompt user to input a format that matches what AlphaVantage accepts
+
+
 
 
 
