@@ -52,8 +52,21 @@ python app/robo_advisor.py
 
 #Prep the input for the stock symbol. We need to prompt user to input a format that matches what AlphaVantage accepts
 
+'''sh
+print("-------------------------")
+x = input("Select your symbol:")
+print("Stock symbol selected:", x)
+print("Let me look that up for you...")
+'''
+
+#Here is where we need to tell the system what to import. Ensure you include code to track and incorporate the important values to you such as Closing Price, High Price, etc. based on the instructions of the assignment and what you want incorporated.
 
 
+#Upon retrieval of the information, ensure you code the data into a csv and save it into your VS Code and Github Desktop for a committ
+
+#Lastly, you'll need to build your recommendation formula. In my case, I chose to use an evaluator of closing price against the average of the high prices in the dataset. Programmed a buy or sell based on if the figure was above or below the mean. 
+
+#Ensure your code is complete and that your roboadvisor functions properly and push to Github. Happy investing!
 
 
 
